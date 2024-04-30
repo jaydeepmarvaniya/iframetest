@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Test Iframe on Github pages</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Attempt to set a cookie
+            document.cookie = "testCookie=true; path=/; SameSite=None; Secure";
+
+            // Check if the cookie was set
+            var cookieSet = document.cookie.indexOf("testCookie=true") !== -1;
+
+            // Send a message back to the parent window
+            window.parent.postMessage(JSON.stringify({
+                cookieSet: cookieSet
+            }), '*');
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
